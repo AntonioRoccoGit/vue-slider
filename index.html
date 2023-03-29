@@ -20,7 +20,7 @@
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
 
-                <div class="item">
+                <div class="item" @mouseover="clearAutoPlay" @mouseleave="autoPlay">
                     <img :src="slides[currentImg].image" alt="Spiderman" />
                     <div class="text">
                         <h3>{{ slides[currentImg].title }}</h3>
@@ -31,9 +31,9 @@
                 </div>
 
                 <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
-                    <div class="thumb" :class="index === currentImg ? 'active' : ''" v-for="(item, index) in slides">
+                    <div class="prev" @click="showPrevBtn"></div>
+                    <div class="next" @click="showNextBtn"></div>
+                    <div class="thumb" :class="index === currentImg ? 'active' : ''" v-for="(item, index) in slides" @click="thisImg(index)">
                         <img :src="slides[index].image" :alt="slides[index].title" />
                     </div>
                     
