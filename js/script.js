@@ -36,14 +36,14 @@ createApp({
     },
     methods: {
         thisImg(a) {
-            clearInterval(this.autoPlayInterval);
+            this.clearAutoPlay();
             this.currentImg = a;
-            this.autoPlayInterval = setInterval(this.showNext, 3000);
+            this.autoPlay();
         },
         showNextBtn() {
-            clearInterval(this.autoPlayInterval);
+            this.clearAutoPlay();
             this.showNext();
-            this.autoPlayInterval = setInterval(this.showNext, 3000);
+            this.autoPlay();
         },
         showNext() {
             if(this.currentImg < this.slides.length - 1) {
@@ -53,13 +53,13 @@ createApp({
             }
         },
         showPrevBtn() {
-            clearInterval(this.autoPlayInterval);
+            this.clearAutoPlay();
             if(this.currentImg > 0) {
                 this.currentImg--;
             }else {
                 this.currentImg = this.slides.length -1;
             }
-            this.autoPlayInterval = setInterval(this.showNext, 3000);
+            this.autoPlay();
         },
         autoPlay() {
             this.autoPlayInterval = setInterval(this.showNext, 3000);
